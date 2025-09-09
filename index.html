@@ -13,9 +13,14 @@
 <body>
   <a href="#banner" class="skip-link">Saltar al contenido principal</a>
   <header>
-    <h1>MANACO</h1>
+    <div class="header-content">
+      <h1>MANACO</h1>
+      <button class="menu-btn" aria-label="Abrir menú" tabindex="0">
+        <span class="menu-icon"></span>
+      </button>
+    </div>
     <nav aria-label="Navegación principal">
-      <ul>
+      <ul class="nav-list">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#contacto">Contacto</a></li>
@@ -61,6 +66,140 @@
   </footer>
 </body>
 <style>
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 16px;
+    outline: none;
+  }
+  .menu-icon {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #222;
+    position: relative;
+    border-radius: 2px;
+  }
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #222;
+    position: absolute;
+    left: 0;
+    border-radius: 2px;
+  }
+  .menu-icon::before {
+    top: -10px;
+  }
+  .menu-icon::after {
+    top: 10px;
+  }
+  @media (max-width: 600px) {
+    header {
+      background: #d32f2f;
+      padding: 12px 16px 0 16px;
+      border-bottom: 2px solid #bbb;
+    }
+    .header-content {
+      padding-bottom: 8px;
+    }
+    header h1 {
+      color: #222;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    .menu-btn {
+      display: inline-block;
+    }
+    nav .nav-list {
+      display: none;
+    }
+    #banner {
+      display: none;
+    }
+    #productos ul {
+      flex-direction: column;
+      gap: 18px;
+    }
+    #productos article {
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #999;
+      border-radius: 8px;
+      padding: 12px;
+      background: #ededed;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 0;
+    }
+    #productos img {
+      margin-bottom: 8px;
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      align-self: center;
+      background: #fafafa;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+    }
+    #productos h3, #productos p {
+      text-align: left;
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 2px;
+    }
+    #productos h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 0;
+    }
+    #productos p {
+      font-size: 0.95rem;
+      color: #222;
+      margin-bottom: 8px;
+    }
+    #productos button {
+      margin-bottom: 0;
+      width: 100%;
+      font-size: 1rem;
+      border: 2px solid #999;
+      border-radius: 4px;
+      background: #fff;
+      color: #222;
+      cursor: pointer;
+      padding: 8px 0;
+      transition: background 0.2s;
+    }
+    #productos button:hover {
+      background: #e0e0e0;
+    }
+    main {
+      padding: 8px;
+    }
+    footer {
+      color: #0057b8;
+      font-size: 1.1rem;
+      padding: 24px 0 16px 0;
+      border-top: 2px solid #bbb;
+      margin-top: 32px;
+    }
+  }
+
   body {
     font-family: Arial, Helvetica, sans-serif;
     background: #fafafa;
@@ -75,6 +214,7 @@
     padding: 16px 32px 0 32px;
     border-bottom: 3px solid #bbb;
     background: #fff;
+    transition: background 0.3s;
   }
   header h1 {
     font-size: 2rem;
@@ -132,11 +272,109 @@
   }
   #productos article {
     background: #fff;
-    border: none;
+    border: 2px solid #999;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 16px;
+  }
+  .menu-icon {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #222;
+    position: relative;
+  }
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: #222;
+    position: absolute;
+    left: 0;
+  }
+  .menu-icon::before {
+    top: -10px;
+  }
+  .menu-icon::after {
+    top: 10px;
+  }
+  @media (max-width: 600px) {
+    #banner {
+      display: none;
+    }
+    #productos ul {
+      flex-direction: column;
+      gap: 24px;
+    }
+    header {
+      background: #d32f2f;
+    }
+    header h1 {
+      color: #222;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+    }
+    nav .nav-list {
+      display: none;
+    }
+    .menu-btn {
+      display: inline-block;
+    }
+    .menu-icon, .menu-icon::before, .menu-icon::after {
+      background: #222;
+    }
+    footer {
+      color: #0057b8;
+      font-size: 1.1rem;
+      padding: 24px 0 16px 0;
+    }
+    main {
+      padding: 8px;
+    }
+    #productos article {
+      margin-bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #999;
+      border-radius: 8px;
+      padding: 16px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #productos img {
+      margin-bottom: 8px;
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      align-self: center;
+    }
+    #productos h3, #productos p {
+      text-align: left;
+      width: 100%;
+      margin-left: 0;
+    }
+    #productos button {
+      margin-bottom: 0;
+      width: 100%;
+    }
   }
   #productos img {
     width: 150px;
@@ -184,6 +422,45 @@
     font-size: 1.3rem;
     font-weight: 500;
     margin-top: 48px;
+    color: #222;
+    transition: color 0.3s;
+  }
+
+  @media (max-width: 600px) {
+    #banner {
+      display: none;
+    }
+    #productos ul {
+      flex-direction: column;
+      gap: 24px;
+    }
+    header {
+      background: #d32f2f;
+    }
+    header h1 {
+      color: #fff;
+    }
+    nav a {
+      color: #fff;
+    }
+    footer {
+      color: #0057b8;
+    }
+    main {
+      padding: 16px;
+    }
+    #productos article {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 8px;
+      padding: 16px 0;
+      background: #fff;
+    }
+    #productos img {
+      margin-bottom: 12px;
+    }
+    #productos button {
+      margin-bottom: 0;
+    }
   }
   .skip-link {
     position: absolute;
